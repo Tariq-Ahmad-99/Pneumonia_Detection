@@ -2,11 +2,7 @@
 
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator # type: ignore
-from tensorflow.keras.models import Model, load_model # type: ignore
-from tensorflow.keras.layers import Input, Dense, Flatten, Conv2D, Dropout # type: ignore
-from tensorflow.keras.applications import VGG19 # type: ignore
-from tensorflow.keras.optimizers import SGD, RMSprop, Adam # type: ignore
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau # type: ignore
+
 
 train_datagen = ImageDataGenerator(rescale = 1. / 255,
                    horizontal_flip = 0.4,
