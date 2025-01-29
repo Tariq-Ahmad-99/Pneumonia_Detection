@@ -9,7 +9,7 @@ test_generator = test_datagen.flow_from_directory("data/test",
                                   seed = 42,
                                   color_mode = "rgb")
 
-# Load the trained model
+""" # Load the trained model
 
 model_01 = tf.keras.models.load_model("model\model.h5")
 
@@ -21,4 +21,19 @@ print(f"Validation Loss: {vgg_val_eval_01[0]}")
 print(f"Validation Accuracy: {vgg_val_eval_01[1]}")
 
 print(f"Test Loss: {vgg_test_eval_01[0]}")
-print(f"Test Accuracy: {vgg_test_eval_01[1]}")
+print(f"Test Accuracy: {vgg_test_eval_01[1]}") """
+
+
+# Load the trained model
+
+model_02 = tf.keras.models.load_model("model\model_2.h5")
+
+# Evaluate the model
+vgg_val_eval_02 = model_02.evaluate(validation_generator)
+vgg_test_eval_02 = model_02.evaluate(test_generator)
+
+print(f"Validation Loss: {vgg_val_eval_02[0]}")
+print(f"Validation Accuracy: {vgg_val_eval_02[1]}")
+
+print(f"Test Loss: {vgg_test_eval_02[0]}")
+print(f"Test Accuracy: {vgg_test_eval_02[1]}")
