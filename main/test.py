@@ -24,7 +24,7 @@ print(f"Test Loss: {vgg_test_eval_01[0]}")
 print(f"Test Accuracy: {vgg_test_eval_01[1]}") """
 
 
-# Load the trained model
+""" # Load the trained model
 
 model_02 = tf.keras.models.load_model("model\model_2.h5")
 
@@ -36,4 +36,18 @@ print(f"Validation Loss: {vgg_val_eval_02[0]}")
 print(f"Validation Accuracy: {vgg_val_eval_02[1]}")
 
 print(f"Test Loss: {vgg_test_eval_02[0]}")
-print(f"Test Accuracy: {vgg_test_eval_02[1]}")
+print(f"Test Accuracy: {vgg_test_eval_02[1]}") """
+
+# Load the trained model
+
+model_03 = tf.keras.models.load_model("model/unfrozen.h5")
+
+# Evaluate the model
+vgg_val_eval_03 = model_03.evaluate(validation_generator)
+vgg_test_eval_03 = model_03.evaluate(test_generator)
+
+print(f"Validation Loss: {vgg_val_eval_03[0]}")
+print(f"Validation Accuracy: {vgg_val_eval_03[1]}")
+
+print(f"Test Loss: {vgg_test_eval_03[0]}")
+print(f"Test Accuracy: {vgg_test_eval_03[1]}")
