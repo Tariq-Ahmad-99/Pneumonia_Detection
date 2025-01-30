@@ -56,7 +56,6 @@ def upload():
             basepath, 'uploads', secure_filename(f.filename))
         f.save(file_path)
         value=getResult(file_path)
-        print(f"the result issssssss {value}")
         result=get_className(value) 
         return result
     return None
