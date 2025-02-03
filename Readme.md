@@ -3,6 +3,9 @@
 ## Project Overview
 This project is a pneumonia detection system that classifies chest X-ray images into "Normal" and "Pneumonia" using a Convolutional Neural Network (CNN) based on the VGG19 architecture. The model is trained using TensorFlow and deployed via Flask.
 
+## Dataset 
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+
 ## File Structure
 ```
 PNEUMONIA_DETECTION/
