@@ -1,5 +1,7 @@
 # Pneumonia Detection using VGG19
 
+https://github.com/user-attachments/assets/81c22832-b59d-4f61-a44d-df82d4046f59
+
 ## Project Overview
 This project is a pneumonia detection system that classifies chest X-ray images into "Normal" and "Pneumonia" using a Convolutional Neural Network (CNN) based on the VGG19 architecture. The model is trained using TensorFlow and deployed via Flask.
 
