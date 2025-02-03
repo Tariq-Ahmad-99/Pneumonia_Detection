@@ -30,14 +30,24 @@ def get_className(classNo):
 		return "Pneumonia"
 
 
+# Function to preprocess image and get model prediction
 def getResult(img):
-    image=cv2.imread(img)
-    image = Image.fromarray(image, 'RGB')
-    image = image.resize((128, 128))
-    image=np.array(image)
-    input_img = np.expand_dims(image, axis=0)
-    result= model_03.predict(input_img)
-    result01=np.argmax(result,axis=1)
+    image = cv2.imread(img)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # CHANGED: Convert BGR to RGB
+
+    image = Image.fromarray(image)
+    image = image.resize((128, 128))  # Resize to match training size
+
+    image = np.array(image) / 255.0  # CHANGED: Normalize pixel values (0 to 1)
+
+    input_img = np.expand_dims(image, axis=0)  # Add batch dimension
+
+    result = model_03.predict(input_img)
+    
+    print("Raw model output:", result)  # CHANGED: Debugging print statement
+    result01 = np.argmax(result, axis=1)[0]  # CHANGED: Extract single prediction
+    print("Predicted class:", result01)  # CHANGED: Debugging print statement
+
     return result01
 
 
@@ -52,11 +62,12 @@ def upload():
         f = request.files['file']
 
         basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-            basepath, 'uploads', secure_filename(f.filename))
+        file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
         f.save(file_path)
-        value=getResult(file_path)
-        result=get_className(value) 
+
+        value = getResult(file_path)
+        result = get_className(value)
+
         return result
     return None
 
